@@ -10,7 +10,7 @@ $error="";
         
 
 
-   extract($_POST) ;
+   extract($_POST);
 
 
    if(isset($_POST['Firstname']) &&isset($_POST['Lastname']) && isset($_POST['Email']) && isset($_POST['Phone']) && isset($_POST['City']) && isset($_POST['Postalcode']) && isset($_POST['Country']) && isset($_POST['State']) && isset($_POST['Address']) ){
@@ -102,8 +102,7 @@ $error="";
 
 
 
-   echo $error;
-   echo "testing";
+//    echo `<script> alert ('i am working') </script>`;
         
 
 

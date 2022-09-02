@@ -33,7 +33,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="user-profile.html">
+                            <a href="user-profile.php">
                                 <i class="mdi mdi-account"></i> My Profile
                             </a>
                         </li>
@@ -49,7 +49,7 @@
                             <a href="javascript:0"> <i class="mdi mdi-settings-outline"></i> Setting </a>
                         </li>
                         <li class="dropdown-footer">
-                            <a href="index.html"> <i class="mdi mdi-logout"></i> Log Out </a>
+                            <a href="index.php"> <i class="mdi mdi-logout"></i> Log Out </a>
                         </li>
                     </ul>
                 </li>

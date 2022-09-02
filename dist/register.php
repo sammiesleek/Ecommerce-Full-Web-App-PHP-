@@ -206,6 +206,10 @@
                                     <label>Post Code</label>
                                     <input id="Postalcode" type="text" name="postalcode" placeholder="Post Code" />
                                 </span>
+                                <span class="ec-register-wrap ec-register-half">
+                                    <label>Post Code</label>
+                                    <input id="Postalcode" type="file" name="postalcode" placeholder="Post Code" />
+                                </span>
 
 
                                 <span class="ec-register-wrap ec-recaptcha">

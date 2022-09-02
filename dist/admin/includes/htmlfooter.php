@@ -23,6 +23,3 @@
 
  <!-- Ekka Custom -->
  <script src="assets/js/ekka.js"></script>
- </body>
-
- </html>

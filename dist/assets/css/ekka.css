@@ -10775,8 +10775,8 @@ fieldset:disabled .btn {
 }
 
 .ec-vendor-list .vendor-thumb {
-  width: 45px;
-  height: 45px;
+  width: 200px;
+  height: 200px;
   border-radius: 15px;
 }
 
