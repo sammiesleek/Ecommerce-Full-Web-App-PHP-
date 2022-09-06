@@ -19008,28 +19008,18 @@ body.ec-open:before {
   overflow: auto;
 }
 
-.ec-slide-1 {
+.ec-slide {
   width: 100%;
-  background-image: url("../images/main-slider-banner/1.jpg");
+  /* background-image: url("../images/main-slider-banner/1.jpg"); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   overflow-y: hidden;
 }
 
-.ec-slide-2 {
-  background-image: url("../images/main-slider-banner/1.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
 
-.ec-slide-3 {
-  background-image: url("../images/main-slider-banner/1.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
+
+
 
 /*----  Main Slider Style  ----*/
 .ec-main-slider .container {
@@ -27880,8 +27870,14 @@ i.ecicon.eci-star-o {
 }
 
 .ec-btn-bw .btn-1:hover {
-  -webkit-box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
-          box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+  -webkit-box-shadow: -7px -7px 20px 0px #fff9,
+ -4px -4px 5px 0px #fff9,
+ 7px 7px 20px 0px #0002,
+ 4px 4px 5px 0px #0001;
+          box-shadow: -7px -7px 20px 0px #fff9,
+ -4px -4px 5px 0px #fff9,
+ 7px 7px 20px 0px #0002,
+ 4px 4px 5px 0px #0001;
 }
 
 .ec-btn-bw .btn-2:after {
@@ -28035,8 +28031,14 @@ i.ecicon.eci-star-o {
 .ec-btn-bw .btn-5:hover {
   background: transparent;
   color: #000;
-  -webkit-box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
-          box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+  -webkit-box-shadow: -7px -7px 20px 0px #fff9,
+ -4px -4px 5px 0px #fff9,
+ 7px 7px 20px 0px #0002,
+ 4px 4px 5px 0px #0001;
+          box-shadow: -7px -7px 20px 0px #fff9,
+ -4px -4px 5px 0px #fff9,
+ 7px 7px 20px 0px #0002,
+ 4px 4px 5px 0px #0001;
 }
 
 .ec-btn-bw .btn-5:before,
@@ -28376,8 +28378,14 @@ i.ecicon.eci-star-o {
 }
 
 .ec-btn-bw .btn-12 span:nth-child(1) {
-  -webkit-box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
-          box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+  -webkit-box-shadow: -7px -7px 20px 0px #fff9,
+ -4px -4px 5px 0px #fff9,
+ 7px 7px 20px 0px #0002,
+ 4px 4px 5px 0px #0001;
+          box-shadow: -7px -7px 20px 0px #fff9,
+ -4px -4px 5px 0px #fff9,
+ 7px 7px 20px 0px #0002,
+ 4px 4px 5px 0px #0001;
   -webkit-transform: rotateX(90deg);
   transform: rotateX(90deg);
   -webkit-transform-origin: 50% 50% -24px;

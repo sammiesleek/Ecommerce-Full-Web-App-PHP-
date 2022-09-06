@@ -127,7 +127,8 @@
                                     <div class="modal-footer px-4">
                                         <button type="button" class="btn btn-secondary btn-pill"
                                             data-bs-dismiss="modal">Cancel</button>
-                                        <button id="submit-slider" type="submit" class="btn btn-primary btn-pill">
+                                        <button data-bs-dismiss="modal" id="submit-slider" type="submit"
+                                            class="btn btn-primary btn-pill">
                                             Save
                                             Slider</button>
                                     </div>
@@ -149,6 +150,7 @@
 
     <script src="controllers/js/homeslider.js"></script>
     <script src="controllers/js/loadslider.js"></script>
+    <script src="controllers/js/deleteslide.js"></script>
 
 
 </body>

@@ -1,18 +1,12 @@
-
-    $('#holder').css("display","none")
-// $(document).ready(()=>{
-
-    
-
-
  const loadslide =()=>{
 
             $.ajax({
-                url:"controllers/loadslider.php",
+                url:"controller/loadslide.php",
                 type:"post",
                 success:function(data,success){
 
-                    $("#slider-body").html(data)
+                    $("#slidiner").html(data)
+                    console.log(data)
                 }
 
             })
@@ -21,11 +15,7 @@
     loadslide();
 
 
+  
+
 
     
-
-
-    
-
-
-// })

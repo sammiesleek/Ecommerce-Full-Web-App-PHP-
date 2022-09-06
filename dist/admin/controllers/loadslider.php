@@ -15,6 +15,7 @@
                 $action =$row['action'];
                 $img =$row['image'];
                 $title =$row['title'];
+                $id =$row['id'];
 
 
             $output .= '
@@ -36,9 +37,9 @@
                             <!-- <span class="sr-only">Info</span> -->
                         </button>
 
+            
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Edit</a>
-                            <a class="dropdown-item" href="#">Delete</a>
+                            <button onclick="deleteslide('.$id.')" id="action" class="dropdown-item">Delete</button>
                         </div>
                     </div>
                 </td>
@@ -46,11 +47,11 @@
 
             ';
         }
+        echo $output;
 
 
     }
 
-    echo $output;
 
 
 ?>

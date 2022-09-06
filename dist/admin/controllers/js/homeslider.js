@@ -1,4 +1,4 @@
-
+$('#holder').css("display","none")
 $(document).ready(()=>{
 
    
@@ -18,8 +18,8 @@ $(document).ready(()=>{
                 processData:false,
                 
                 success:function(data, status){
+                    loadslide();
                     
-                    console.log(data)
                 }
             })
                

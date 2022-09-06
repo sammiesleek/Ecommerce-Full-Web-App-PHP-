@@ -1,6 +1,16 @@
 <?php
 include("../../config/session.php");
 
+// delete slider 
+
+if(isset($_POST['id'])){
+    $id =$_POST['id'];
+
+    $query = "DELETE from home_main_Slide WHERE id =?";
+    $stmt =$conn->prepare($query);
+    $stmt->bind_param('s', $id);
+    $stmt->execute();
+}
 
 
 if(!empty($_POST['title']) && !empty($_POST['sub-title']) && !empty($_POST['description']) && !empty($_POST['link']) && !empty($_POST['action']) ){
