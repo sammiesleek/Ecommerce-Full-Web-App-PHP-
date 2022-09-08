@@ -11,6 +11,7 @@
 
        
 $error="";
+  $feedb='';
         
 
 
@@ -34,23 +35,26 @@ $error="";
 
 
         if(filter_var($Email,FILTER_VALIDATE_EMAIL) ){
+                
 
-                $query = "SELECT * FROM customers WHERE Email =? ";
+                $query = "SELECT * FROM user_accounts WHERE Email =? LIMIT 1 ";
                 $stmt=$conn->prepare($query);
                 $stmt->bind_param("s",$Email);
                 if($stmt->execute()){
                     $result = $stmt->get_result();
                     $count = $result->num_rows;
+                    $accountrole= 'customer';
 
 
                     if($count < 1){
                         
 
-                        $query = "SELECT * FROM customers WHERE Phone =? ";
+                        $query = "SELECT * FROM user_accounts WHERE Phone =? LIMIT 1 ";
                         $stmt=$conn->prepare($query);
                         $stmt->bind_param("s",$Phone);
 
                         if($stmt->execute()){
+                                $status = 0;
                                 $result = $stmt->get_result();
                                 $count = $result->num_rows;
                                 if($count < 1){
@@ -59,11 +63,12 @@ $error="";
                                         $CustomerId= $Email. bin2hex(random_bytes(20));
                                         $password= password_hash($Confpass, PASSWORD_DEFAULT);
 
-                                        $query ="INSERT INTO customers (Firstname,Lastname,Email,Phone,State,City,Country, Postalcode,Address,customer_id,password)  VALUE(?,?,?,?,?,?,?,?,?,?,?)";
+                                        $query ="INSERT INTO user_accounts (firstname,lastname,email,phone,state,city,country, postalcode,address,userId,password,verification_code,verified,account_role)  VALUE(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                                         $stmt= $conn->prepare($query);
-                                        $stmt->bind_param("sssssssssss",$Firstname,$Lastname,$Email,$Phone,$State,$City,$Country,$Postalcode,$Address,$CustomerId,$password);
+                                        $stmt->bind_param("ssssssssssssis",$Firstname,$Lastname,$Email,$Phone,$State,$City,$Country,$Postalcode,$Address,$CustomerId,$password,$code,$status,$accountrole);
                                         if($stmt->execute()){
-                                                echo "Registration successful";
+                                                
+                                                $feedb .='success';
 
 
                                              
@@ -80,7 +85,7 @@ $error="";
                                                                 fully functional, you need to confirm your email address by clicking the box below</p>
 
 
-                                                        <a href="home.com" style="margin:0px auto;text-align:center;background: rgb(239, 167, 0);padding:10px 60px ; border-radius:5px; color:white; font-size:20px;text-decoration: none; display:block; width:fit-content"
+                                                        <a href="http://localhost/works/EMS%20(full%20app)/dist/activate.php?code='.$code.'&user='.$CustomerId.'" style="margin:0px auto;text-align:center;background: rgb(239, 167, 0);padding:10px 60px ; border-radius:5px; color:white; font-size:20px;text-decoration: none; display:block; width:fit-content"
                                                                 href="">Confirm
                                                                 Mail
                                                         </a>
@@ -107,7 +112,7 @@ $error="";
 
                                                 try {
                                                 //Server settings
-                                                $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+                                                $mail->SMTPDebug   =0;                  //Enable verbose debug output
                                                 $mail->isSMTP();                                            //Send using SMTP
                                                 $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
                                                 $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -135,11 +140,13 @@ $error="";
                                                 $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
                                                 $mail->send();
-                                                echo 'Message has been sent';
                                                 } catch (Exception $e) {
                                                 echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-                                                }
 
+                                                
+                                                }
+                                                
+                                               
 
 
                                         }else{
@@ -172,14 +179,15 @@ $error="";
         
 
         
+      
 
-
+                echo   $feedb;
+        
 
    }
 
 
 
-//    echo `<script> alert ('i am working') </script>`;
         
 
 

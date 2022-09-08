@@ -6,7 +6,6 @@ $("#form-reg").submit(function(e){
 
 
 
-
 var element =  $("#error");
  element.css("display", "none")
 
@@ -19,6 +18,7 @@ $(document).ready(()=>{
     
     $("#submi-form").click(function(){
         var errors = "";
+         element.css("background", "#ffd6d6")
         
        
     
@@ -73,7 +73,51 @@ $(document).ready(()=>{
                                                         },
                                                         success:function(data, status){
                                                            
-                                                            console.log(data)
+                                                            
+                                                                if(data === 'success'){
+
+                                                                    
+                                                                    errors = 'Account has been created succesfully'
+                                                                    $("#error").html(errors)
+                                                                    if(errors.length != ""){
+                                                                    element.css("display", "block")
+                                                                    element.css("background", "#9fff9f")
+                                                                    }else{
+
+                                                                        element.css("display", "none")
+                                                                    }
+
+
+                                                                  setTimeout(function(){ window.location = 'login.php'; }, 1000)
+
+
+
+
+                                                                }else{
+                                                                    errors = data
+                                                                   $("#error").html(errors)
+                                                                   if(errors.length != ""){
+                                                                   element.css("display", "block")
+                                                                   }else{
+   
+                                                                       element.css("display", "none")
+                                                                   }
+
+                                                                }
+
+
+
+                                                                    
+
+                                                                    
+
+                                                                        
+
+                                                               
+
+
+                                                                
+                                                            
                                                         }
                                                     })
         

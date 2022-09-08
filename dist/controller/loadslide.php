@@ -9,7 +9,7 @@
     if($stmt->execute()){
        
         $result = $stmt->get_result();
-        while($row = $result->fetch_assoc() ){
+        while($row = $result->fetch_assoc()){
 
                 $title =$row['title'];
                 $sub_title =$row['sub_title'];
@@ -31,6 +31,8 @@
                                     <a href="#" class="btn btn-lg btn-secondary">'.$action.'</a>
                                 </div>
                             </div>
+                            
+
                         </div>
                     </div>
                 </div>

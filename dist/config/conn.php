@@ -16,11 +16,11 @@ class Database{
             }    
         
     }
-    public function __destruct()
-    {
-        $this->closeConnection();
-    }
-    protected function closeConnection()
+    // public function __destruct()
+    // {
+    //     $this->closeConnection();
+    // }
+    public function closeConnection()
     {
         if($this->conn != null){
             $this->conn->close();

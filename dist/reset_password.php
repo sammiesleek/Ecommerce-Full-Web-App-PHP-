@@ -1,12 +1,13 @@
 <?php
 
-require_once('includes/htmlheader.php') ;
+include('includes/htmlheader.php') ;
 
-if(isset($_SESSION['email'])){
-     header("Location:index.php");
-     exit();
+
+
+if(!isset($_GET['code']) || !isset($_GET['user']) ) {
+    
+    header("Location:index.php");
 }
-
 
 ?>
 
@@ -31,13 +32,13 @@ if(isset($_SESSION['email'])){
                 <div class="col-12">
                     <div class="row ec_breadcrumb_inner">
                         <div class="col-md-6 col-sm-12">
-                            <h2 class="ec-breadcrumb-title">Login</h2>
+                            <h2 class="ec-breadcrumb-title">Reset Password
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <!-- ec-breadcrumb-list start -->
                             <ul class="ec-breadcrumb-list">
                                 <li class="ec-breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="ec-breadcrumb-item active">Login</li>
+                                <li class="ec-breadcrumb-item active">Reset Password</li>
                             </ul>
                             <!-- ec-breadcrumb-list end -->
                         </div>
@@ -48,14 +49,14 @@ if(isset($_SESSION['email'])){
     </div>
     <!-- Ec breadcrumb end -->
 
-    <!-- Ec login page -->
+    <!-- Ec password reset page -->
     <section class="ec-page-content section-space-p">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
                     <div class="section-title">
-                        <h2 class="ec-bg-title">Log In</h2>
-                        <h2 class="ec-title">Log In</h2>
+                        <h2 class="ec-bg-title">set new password </h2>
+                        <h2 class="ec-title">set new password</h2>
                         <p class="sub-title mb-3">Best place to buy and sell digital products</p>
                     </div>
                 </div>
@@ -67,22 +68,27 @@ if(isset($_SESSION['email'])){
 
                         </span>
                         <div class="ec-login-form">
-                            <form id="login_form">
+                            <form id="updt">
                                 <span class="ec-login-wrap">
-                                    <label>Email Address*</label>
-                                    <input id="email" type="text" name="name" placeholder="Enter your email add..." />
+                                    <label>New Password*</label>
+                                    <input id="password" type="password" name="name" />
                                 </span>
                                 <span class="ec-login-wrap">
-                                    <label>Password*</label>
-                                    <input id="password" type="password" name="password"
-                                        placeholder="Enter your password" />
+                                    <label>Confirm Password</label>
+                                    <input id="cpassword" type="password" name="name" />
                                 </span>
-                                <span class="ec-login-wrap ec-login-fp">
-                                    <label><a href="forgot_password.php">Forgot Password?</a></label>
+                                <span style="display:none ; opacity:none">
+
+                                    <input id="codev" value="<?php if(!empty($_GET['code'])){echo $_GET['code']; }?>" />
                                 </span>
+                                <span style="display:none ; opacity:none">
+
+                                    <input id="userId"
+                                        value="<?php if(!empty($_GET['user'])){echo $_GET['user']; }?>" />
+                                </span>
+
                                 <span class="ec-login-wrap ec-login-btn">
-                                    <button id="logbtn" class="btn btn-primary" type="submit">Login</button>
-                                    <a href="register.php" class="btn btn-secondary">Register</a>
+                                    <button id="savebtn" class="btn btn-primary" type="submit">Save</button>
                                 </span>
                             </form>
                         </div>
@@ -98,34 +104,7 @@ if(isset($_SESSION['email'])){
 
 
     <!-- Footer navigation panel for responsive display -->
-    <div class="ec-nav-toolbar">
-        <div class="container">
-            <div class="ec-nav-panel">
-                <div class="ec-nav-panel-icons">
-                    <a href="#ec-mobile-menu" class="navbar-toggler-btn ec-header-btn ec-side-toggle"><img
-                            src="assets/images/icons/menu.svg" class="svg_img header_svg" alt="" /></a>
-                </div>
-                <div class="ec-nav-panel-icons">
-                    <a href="#ec-side-cart" class="toggle-cart ec-header-btn ec-side-toggle"><img
-                            src="assets/images/icons/cart.svg" class="svg_img header_svg" alt="" /><span
-                            class="ec-cart-noti ec-header-count cart-count-lable">3</span></a>
-                </div>
-                <div class="ec-nav-panel-icons">
-                    <a href="index.html" class="ec-header-btn"><img src="assets/images/icons/home.svg"
-                            class="svg_img header_svg" alt="icon" /></a>
-                </div>
-                <div class="ec-nav-panel-icons">
-                    <a href="wishlist.html" class="ec-header-btn"><img src="assets/images/icons/wishlist.svg"
-                            class="svg_img header_svg" alt="icon" /><span class="ec-cart-noti">4</span></a>
-                </div>
-                <div class="ec-nav-panel-icons">
-                    <a href="login.html" class="ec-header-btn"><img src="assets/images/icons/user.svg"
-                            class="svg_img header_svg" alt="icon" /></a>
-                </div>
-
-            </div>
-        </div>
-    </div>
+    <?php require("includes/mobilenavigation.php") ?>
     <!-- Footer navigation panel for responsive display end -->
 
     <!-- Recent Purchase Popup  -->
@@ -151,7 +130,7 @@ if(isset($_SESSION['email'])){
 
     <!-- Whatsapp -->
     <div class="ec-style ec-right-bottom">
-        <!-- Start Floating Panel Container -->
+        <!-- Start Floating Panel Container ---->
         <div class="ec-panel">
             <!-- Panel Header -->
             <div class="ec-header">
@@ -346,7 +325,111 @@ if(isset($_SESSION['email'])){
     </div>
     <!-- Feature tools end -->
     <?php include('includes/htmlfooter.php') ?>
-    <script src="controller/js/login.js"></script>
+    <!-- <script src="controller/js/resetpassword.js"></script> -->
+
+    <script>
+    var element = $("#error");
+    element.css("display", "none")
+
+    // var errors = "";
+    $("#updt").submit((e) => {
+        e.preventDefault();
+    })
+
+    $(document).ready(() => {
+
+        $("#savebtn").click(() => {
+            element.css("background", "#ffd6d6")
+            var errors = '';
+            element.css("display", "none")
+            var pass1 = $("#password").val()
+            var pass2 = $("#cpassword").val()
+            var code = $("#codev").val()
+            var userId = $("#userId").val()
+
+            // alert(pass1)
+
+
+            if (pass1.length > 8) {
+                if (pass2 === pass1) {
+                    if (!code || !userId) {
+
+                        var errors = "invalid user Id"
+
+                    } else {
+                        $.ajax({
+                            type: 'post',
+                            url: "controller/setnewpassword.php",
+                            data: {
+                                password: pass1,
+                                code: code,
+                                userId: userId
+
+                            },
+                            success: function(data, status) {
+                                if (data === 'success') {
+                                    errors = 'Password changed Successfully'
+                                    $("#error").html(errors)
+                                    if (errors.length != "") {
+                                        element.css("display", "block")
+                                        element.css("background", "#9fff9f")
+                                    } else {
+
+                                        element.css("display", "none")
+                                    }
+                                    setTimeout(function() {
+                                        window.location = 'login.php';
+                                    }, 3000)
+                                } else {
+                                    errors = data
+                                    $("#error").html(errors)
+                                    if (errors.length != "") {
+                                        element.css("display", "block")
+                                    } else {
+
+                                        element.css("display", "none")
+                                    }
+
+                                }
+
+
+                            }
+
+
+                        })
+                    }
+
+
+
+                } else {
+                    var errors = "Password Do not match"
+                }
+            } else {
+
+                var errors = "Password too short"
+            }
+
+
+
+
+            $("#error").html(errors)
+            if (errors.length != "") {
+                element.css("display", "block")
+            } else {
+
+                element.css("display", "none")
+            }
+
+
+
+        })
+
+
+
+
+
+    })
+    </script>
 
 </body>
 

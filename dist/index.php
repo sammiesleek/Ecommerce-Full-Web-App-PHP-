@@ -1,6 +1,18 @@
 <?php
-require "includes/htmlheader.php"
+require_once ("includes/htmlheader.php");
+
+    $query ="SELECT * from home_main_slide";
+    $stmt=$conn->prepare($query);
+    if($stmt->execute()){
+       
+        $result = $stmt->get_result();
+    }
+
+    
+
+
 ?>
+
 
 <body>
     <!-- <div id="ec-overlay"><span class="loader_img"></span></div> -->
@@ -70,8 +82,42 @@ require "includes/htmlheader.php"
     <div class="sticky-header-next-sec ec-main-slider section section-space-pb">
         <div class="ec-slider swiper-container main-slider-nav main-slider-dot">
             <!-- Main slider -->
-            <div id="slidiner" class="swiper-wrapper">
+            <div class="swiper-wrapper">
 
+                <?php
+
+                  while($row = $result->fetch_assoc()){
+
+                $title =$row['title'];
+                $sub_title =$row['sub_title'];
+                $action =$row['action'];
+                $img =$row['image'];
+                $info =$row['text_add'];
+                $id =$row['id'];
+
+
+                        echo '
+                        
+                        <div style="background-image:url(admin/slider_images/'.$img.'); background-size:cover, background-position:center" class="ec-slide-item swiper-slide d-flex ec-slide">
+                            <div class="container align-self-center">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
+                                        <div class="ec-slide-content slider-animation">
+                                            <h1 class="ec-slide-title">New Fashion Collection</h1>
+                                            <h2 class="ec-slide-stitle">Sale Offer</h2>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+                                            <a href="#" class="btn btn-lg btn-secondary">'.$action.'</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        ';
+                }
+            ?>
             </div>
             <div class="swiper-pagination swiper-pagination-white"></div>
             <div class="swiper-buttons">
@@ -1710,34 +1756,7 @@ require "includes/htmlheader.php"
     <!-- Newsletter Modal end -->
 
     <!-- Footer navigation panel for responsive display -->
-    <div class="ec-nav-toolbar">
-        <div class="container">
-            <div class="ec-nav-panel">
-                <div class="ec-nav-panel-icons">
-                    <a href="#ec-mobile-menu" class="navbar-toggler-btn ec-header-btn ec-side-toggle"><img
-                            src="assets/images/icons/menu.svg" class="svg_img header_svg" alt="icon" /></a>
-                </div>
-                <div class="ec-nav-panel-icons">
-                    <a href="#ec-side-cart" class="toggle-cart ec-header-btn ec-side-toggle"><img
-                            src="assets/images/icons/cart.svg" class="svg_img header_svg" alt="icon" /><span
-                            class="ec-cart-noti ec-header-count cart-count-lable">3</span></a>
-                </div>
-                <div class="ec-nav-panel-icons">
-                    <a href="index.html" class="ec-header-btn"><img src="assets/images/icons/home.svg"
-                            class="svg_img header_svg" alt="icon" /></a>
-                </div>
-                <div class="ec-nav-panel-icons">
-                    <a href="wishlist.html" class="ec-header-btn"><img src="assets/images/icons/wishlist.svg"
-                            class="svg_img header_svg" alt="icon" /><span class="ec-cart-noti">4</span></a>
-                </div>
-                <div class="ec-nav-panel-icons">
-                    <a href="login.html" class="ec-header-btn"><img src="assets/images/icons/user.svg"
-                            class="svg_img header_svg" alt="icon" /></a>
-                </div>
-
-            </div>
-        </div>
-    </div>
+    <?php include('includes/mobilenavigation.php') ?>
     <!-- Footer navigation panel for responsive display end -->
 
     <!-- Recent Purchase Popup  -->
@@ -1888,7 +1907,7 @@ require "includes/htmlheader.php"
 
 
     <?php require("includes/htmlfooter.php")   ?>
-    <script src="controller/js/loadslide.js"></script>
+    <!-- <script src="controller/js/loadslide.js"></script> -->
 
 
 

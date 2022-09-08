@@ -1,18 +1,25 @@
- const loadslide =()=>{
+// $(document).ready(()=>{
 
-            $.ajax({
-                url:"controller/loadslide.php",
-                type:"post",
-                success:function(data,success){
 
-                    $("#slidiner").html(data)
-                    console.log(data)
-                }
+    const loadslide =()=>{
+    
+                $.ajax({
+                    url:"controller/loadslide.php",
+                    type:"post",
+                    success:function(data,success){
 
-            })
-    }
+                        // document.getElementById("#slidiner").append(data);
+    
+                        $("#slidiner").append(data)
+                        
+                    }
+    
+                })
+        }
+    
+        loadslide();
+// })
 
-    loadslide();
 
 
   
