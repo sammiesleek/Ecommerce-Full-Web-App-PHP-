@@ -1,6 +1,5 @@
 
     $('#holder').css("display","none")
-// $(document).ready(()=>{
 
     
 
@@ -10,22 +9,11 @@
             $.ajax({
                 url:"controllers/loadslider.php",
                 type:"post",
-                success:function(data,success){
+                success:function(data,status){
 
                     $("#slider-body").html(data)
                 }
 
             })
     }
-
     loadslide();
-
-
-
-    
-
-
-    
-
-
-// })

@@ -1,3 +1,14 @@
+<?php
+    $query ="SELECT * FROM categories ";
+    $stmt=$conn->prepare($query);
+    $stmt->execute();
+    $catresult= $stmt->get_result();
+
+    
+
+
+?>
+
 <header class="ec-header">
     <!--Ec Header Top Start -->
     <div class="header-top">
@@ -243,70 +254,29 @@
                             <li class="dropdown position-static"><a href="javascript:void(0)">Categories</a>
                                 <ul class="mega-menu d-block">
                                     <li class="d-flex">
-                                        <ul class="d-block">
-                                            <li class="menu_title"><a href="javascript:void(0)">Classic
-                                                    Variation</a></li>
-                                            <li><a href="shop.php">Left sidebar 3 column</a>
-                                            </li>
-                                            <li><a href="shop-left-sidebar-col-4.php">Left sidebar 4 column</a>
-                                            </li>
-                                            <li><a href="shop-right-sidebar-col-3.php">Right sidebar 3 column</a>
-                                            </li>
-                                            <li><a href="shop-right-sidebar-col-4.php">Right sidebar 4 column</a>
-                                            </li>
-                                            <li><a href="shop-full-width.php">Full width 4 column</a></li>
-                                        </ul>
-                                        <ul class="d-block">
-                                            <li class="menu_title"><a href="javascript:void(0)">Classic
-                                                    Variation</a></li>
-                                            <li><a href="shop-banner.php">Banner left sidebar 3
-                                                    column</a></li>
-                                            <li><a href="shop-banner-left-sidebar-col-4.php">Banner left sidebar 4
-                                                    column</a></li>
-                                            <li><a href="shop-banner-right-sidebar-col-3.php">Banner right sidebar
-                                                    3 column</a></li>
-                                            <li><a href="shop-banner-right-sidebar-col-4.php">Banner right sidebar
-                                                    4 column</a></li>
-                                            <li><a href="shop-banner-full-width.php">Banner Full width 4 column</a>
-                                            </li>
-                                        </ul>
-                                        <ul class="d-block">
-                                            <li class="menu_title"><a href="javascript:void(0)">Columns
-                                                    Variation</a></li>
-                                            <li><a href="shop-full-width-col-3.php">3 Columns full width</a></li>
-                                            <li><a href="shop-full-width-col-4.php">4 Columns full width</a></li>
-                                            <li><a href="shop-full-width-col-5.php">5 Columns full width</a></li>
-                                            <li><a href="shop-full-width-col-6.php">6 Columns full width</a></li>
-                                            <li><a href="shop-banner-full-width-col-3.php">Banner 3 Columns</a>
-                                            </li>
-                                        </ul>
-                                        <ul class="d-block">
-                                            <li class="menu_title"><a href="javascript:void(0)">List Variation</a>
-                                            </li>
-                                            <li><a href="shop-list-left-sidebar.php">Shop left sidebar</a></li>
-                                            <li><a href="shop-list-right-sidebar.php">Shop right sidebar</a></li>
-                                            <li><a href="shop-list-banner-left-sidebar.php">Banner left sidebar</a>
-                                            </li>
-                                            <li><a href="shop-list-banner-right-sidebar.php">Banner right
-                                                    sidebar</a></li>
-                                            <li><a href="shop-list-full-col-2.php">Full width 2 columns</a></li>
-                                        </ul>
+
+                                        <?php 
+                                        while($catdata= $catresult->fetch_assoc()){
+                                            $name = $catdata['cat_title'];
+                                            $cat_id = $catdata['cat_id'];
+
+
+                                            echo '
+                                            <ul id="'.$name.'" class="d-block parent_cat">
+                                                <li class="menu_title"><a href="javascript:void(0)">'.$name.'</a></li>
+                                                <span class="'.$name.'">
+                                                   
+                                                </span>
+                                            </ul>
+
+                                            ';
+                                        }
+
+
+                                    ?>
+
                                     </li>
-                                    <li>
-                                        <ul class="ec-main-banner w-100">
-                                            <li><a class="p-0" href="shop.php"><img class="img-responsive"
-                                                        src="assets/images/menu-banner/1.jpg" alt=""></a></li>
-                                            <li><a class="p-0" href="shop-left-sidebar-col-4.php"><img
-                                                        class="img-responsive" src="assets/images/menu-banner/2.jpg"
-                                                        alt=""></a></li>
-                                            <li><a class="p-0" href="shop-right-sidebar-col-3.php"><img
-                                                        class="img-responsive" src="assets/images/menu-banner/3.jpg"
-                                                        alt=""></a></li>
-                                            <li><a class="p-0" href="shop-right-sidebar-col-4.php"><img
-                                                        class="img-responsive" src="assets/images/menu-banner/4.jpg"
-                                                        alt=""></a></li>
-                                        </ul>
-                                    </li>
+
                                 </ul>
                             </li>
 

@@ -5,7 +5,7 @@ require_once ("includes/htmlheader.php");
     $stmt=$conn->prepare($query);
     if($stmt->execute()){
        
-        $result = $stmt->get_result();
+        $resultslide = $stmt->get_result();
     }
 
     
@@ -86,7 +86,7 @@ require_once ("includes/htmlheader.php");
 
                 <?php
 
-                  while($row = $result->fetch_assoc()){
+                  while($row = $resultslide->fetch_assoc()){
 
                 $title =$row['title'];
                 $sub_title =$row['sub_title'];
@@ -103,9 +103,9 @@ require_once ("includes/htmlheader.php");
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
                                         <div class="ec-slide-content slider-animation">
-                                            <h1 class="ec-slide-title">New Fashion Collection</h1>
-                                            <h2 class="ec-slide-stitle">Sale Offer</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+                                            <h1 class="ec-slide-title">'.$title.'</h1>
+                                            <h2 class="ec-slide-stitle">'.$sub_title.'</h2>
+                                            <p>'.$info.'</p>
                                             <a href="#" class="btn btn-lg btn-secondary">'.$action.'</a>
                                         </div>
                                     </div>
@@ -1908,6 +1908,45 @@ require_once ("includes/htmlheader.php");
 
     <?php require("includes/htmlfooter.php")   ?>
     <!-- <script src="controller/js/loadslide.js"></script> -->
+    <script>
+    $(document).ready(() => {
+        setTimeout(() => {
+
+            const target = document.querySelectorAll(".parent_cat")
+
+            target.forEach((element) => {
+
+
+                var elementId = element.id
+                var elementtarget = element.id
+
+
+                var desti = $("." + elementtarget)
+
+                $.ajax({
+                    type: 'post',
+                    data: {
+                        id: elementId,
+                        elementId: elementtarget
+                    },
+                    url: 'admin/controllers/load_sub_category.php',
+                    success: function(data, status) {
+                        desti.html(data)
+                    }
+
+                })
+
+
+            });
+
+
+
+        }, 1000);
+
+
+
+    })
+    </script>
 
 
 
