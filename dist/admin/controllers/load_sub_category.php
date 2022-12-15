@@ -4,6 +4,8 @@ include("../../config/session.php");
 
 $output = "";
 
+$type = $_POST['type'];
+
 if (isset($_POST['id'])) {
     $id = $_POST['id'];
     $query = "SELECT * FROM sub_categories WHERE  parent_cat = ?";
@@ -14,19 +16,28 @@ if (isset($_POST['id'])) {
 
         while ($data = $result->fetch_assoc()) {
             $title = $data['cat_title'];
-            if(isset($_POST['elementId'])){
+            if($type == "loadsubcat"){
 
                 $output .='
                 
-                            <li>
-                                 <a href="shop.php">'.$title.'</a>
-                              </li>
+                  <span class="ec-sub-cat-tag">' . $title . '</span>
                 
                 ';
-            }else{
+            };
+             if($type == "loadsubcatm") {
+                    $output .= '
+                <li>
+                     <a href="shop.php">'.$title.'</a>
+                  </li>k
+                
+                 ';
+            }
+
+
+            if($type == 'addproduct'){
 
                 $output .= '
-                        <span class="ec-sub-cat-tag">' . $title . '</span>
+                        <option value="'.$title.'">'.$title.'</option>
                 
                 ';
             }

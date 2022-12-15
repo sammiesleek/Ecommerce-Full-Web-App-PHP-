@@ -8,6 +8,9 @@
         $.ajax({
             type:'post',
             url:'controllers/load_categories.php',
+            data:{
+                type:'categories'
+            },
             success:function(data,status){
                 innerel.html(data)
              }
@@ -28,7 +31,7 @@
 
                  const target = document.querySelectorAll(".cat_body")
     
-            console.log(target)   
+            // console.log(target)   
             target.forEach((element) => {
              var elementId = element.id
              var elementtarget = element.id
@@ -37,7 +40,8 @@
                 $.ajax({
                     type:'post',
                     data:{
-                        id:elementId
+                        id:elementId,
+                        type:'subcat'
                     },
                     url:'controllers/load_sub_category.php',
                     success:function(data,status){
@@ -81,7 +85,8 @@
                 $.ajax({
                     type:'post',
                     data:{
-                        id:elementId
+                        id:elementId,
+                        type:'loadsubcat'
                     },
                     url:'controllers/load_sub_category.php',
                     success:function(data,status){
