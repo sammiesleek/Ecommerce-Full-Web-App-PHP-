@@ -2,7 +2,10 @@
     include("../../config/session.php");
 
 
-    echo("working");
+    print_r($_POST);
+    print_r($_FILES);
+
+
 
 
 

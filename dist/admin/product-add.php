@@ -38,13 +38,14 @@
 
                                 <div class="card-body">
                                     <div class="row ec-vendor-uploads">
+
                                         <div class="col-lg-4">
                                             <div class="ec-vendor-img-upload">
                                                 <div class="ec-vendor-main-img">
                                                     <div class="avatar-upload">
                                                         <div class="avatar-edit">
-                                                            <input type='file' id="imageUpload" class="ec-image-upload"
-                                                                accept=".png, .jpg, .jpeg" />
+                                                            <input type='file' id="mainimg" name="mainimg"
+                                                                class="xc ec-image-upload" accept=".png, .jpg, .jpeg" />
                                                             <label for="imageUpload"><img
                                                                     src="assets/img/icons/edit.svg"
                                                                     class="svg_img header_svg" alt="edit" /></label>
@@ -57,11 +58,11 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="thumb-upload-set colo-md-12">
+                                                    <div class="thumb-upload-set col-md-12">
                                                         <div class="thumb-upload">
                                                             <div class="thumb-edit">
-                                                                <input type='file' id="thumbUpload01"
-                                                                    class="ec-image-upload"
+                                                                <input type='file' id="samp01"
+                                                                    class="thumbnails ec-image-upload"
                                                                     accept=".png, .jpg, .jpeg" />
                                                                 <label for="imageUpload"><img
                                                                         src="assets/img/icons/edit.svg"
@@ -77,8 +78,8 @@
                                                         </div>
                                                         <div class="thumb-upload">
                                                             <div class="thumb-edit">
-                                                                <input type='file' id="thumbUpload02"
-                                                                    class="ec-image-upload"
+                                                                <input type='file' id="samp02"
+                                                                    class="thumbnails ec-image-upload"
                                                                     accept=".png, .jpg, .jpeg" />
                                                                 <label for="imageUpload"><img
                                                                         src="assets/img/icons/edit.svg"
@@ -94,8 +95,8 @@
                                                         </div>
                                                         <div class="thumb-upload">
                                                             <div class="thumb-edit">
-                                                                <input type='file' id="thumbUpload03"
-                                                                    class="ec-image-upload"
+                                                                <input type='file' id="samp03"
+                                                                    class="thumbnails ec-image-upload"
                                                                     accept=".png, .jpg, .jpeg" />
                                                                 <label for="imageUpload"><img
                                                                         src="assets/img/icons/edit.svg"
@@ -111,8 +112,8 @@
                                                         </div>
                                                         <div class="thumb-upload">
                                                             <div class="thumb-edit">
-                                                                <input type='file' id="thumbUpload04"
-                                                                    class="ec-image-upload"
+                                                                <input type='file' id="samp04"
+                                                                    class="thumbnails ec-image-upload"
                                                                     accept=".png, .jpg, .jpeg" />
                                                                 <label for="imageUpload">
                                                                     <img src="assets/img/icons/edit.svg"
@@ -129,8 +130,8 @@
                                                         </div>
                                                         <div class="thumb-upload">
                                                             <div class="thumb-edit">
-                                                                <input type='file' id="thumbUpload05"
-                                                                    class="ec-image-upload"
+                                                                <input type='file' id="samp05"
+                                                                    class="thumbnails ec-image-upload"
                                                                     accept=".png, .jpg, .jpeg" />
                                                                 <label for="imageUpload"><img
                                                                         src="assets/img/icons/edit.svg"
@@ -146,8 +147,7 @@
                                                         </div>
                                                         <div class="thumb-upload">
                                                             <div class="thumb-edit">
-                                                                <input type='file' id="thumbUpload06"
-                                                                    class="ec-image-upload"
+                                                                <input type='file' id="samp06" class="ec-image-upload"
                                                                     accept=".png, .jpg, .jpeg" />
                                                                 <label for="imageUpload"><img
                                                                         src="assets/img/icons/edit.svg"
@@ -165,13 +165,14 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="col-lg-8">
                                             <div class="ec-vendor-upload-detail">
-                                                <form class="row g-3">
+                                                <form id="product_form" class="row g-3">
                                                     <div class="col-md-6">
-                                                        <label for="inputEmail4" class="form-label">Product name</label>
+                                                        <label for="" class="form-label">Product name</label>
                                                         <input type="text" class="form-control slug-title"
-                                                            id="inputEmail4">
+                                                            id="productname">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label">Select Categories</label>
@@ -183,26 +184,31 @@
                                                     <div class="col-md-12">
                                                         <label for="slug" class="col-12 col-form-label">Slug</label>
                                                         <div class="col-12">
-                                                            <input id="slug" name="slug"
+                                                            <input id="productslug" name="slug"
                                                                 class="form-control here set-slug" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <label class="form-label">Sort Description</label>
-                                                        <textarea class="form-control" rows="2"></textarea>
+                                                        <label class="form-label">Short Description</label>
+                                                        <textarea id="productdescription" class="form-control"
+                                                            rows="2"></textarea>
                                                     </div>
                                                     <div class="col-md-4 mb-25">
                                                         <label class="form-label">Colors</label>
-                                                        <input type="color" class="form-control form-control-color"
+                                                        <input type="color"
+                                                            class="form-control form-control-color pro_color"
                                                             id="exampleColorInput1" value="#ff6191"
                                                             title="Choose your color">
-                                                        <input type="color" class="form-control form-control-color"
+                                                        <input type="color"
+                                                            class="form-control form-control-color pro_color"
                                                             id="exampleColorInput2" value="#33317d"
                                                             title="Choose your color">
-                                                        <input type="color" class="form-control form-control-color"
+                                                        <input type="color"
+                                                            class="form-control form-control-color pro_color"
                                                             id="exampleColorInput3" value="#56d4b7"
                                                             title="Choose your color">
-                                                        <input type="color" class="form-control form-control-color"
+                                                        <input type="color"
+                                                            class="form-control form-control-color pro_color"
                                                             id="exampleColorInput4" value="#009688"
                                                             title="Choose your color">
                                                     </div>
@@ -210,23 +216,28 @@
                                                         <label class="form-label">Size</label>
                                                         <div class="form-checkbox-box">
                                                             <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="size1" value="size">
+                                                                <input type="checkbox" class="prosize" name="size1"
+                                                                    value="S">
                                                                 <label>S</label>
                                                             </div>
                                                             <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="size1" value="size">
+                                                                <input type="checkbox" class="prosize" name="size1"
+                                                                    value="M">
                                                                 <label>M</label>
                                                             </div>
                                                             <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="size1" value="size">
+                                                                <input type="checkbox" class="prosize" name="size1"
+                                                                    value="L">
                                                                 <label>L</label>
                                                             </div>
                                                             <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="size1" value="size">
+                                                                <input type="checkbox" class="prosize" name="size1"
+                                                                    value="XL">
                                                                 <label>XL</label>
                                                             </div>
                                                             <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="size1" value="size">
+                                                                <input type="checkbox" class="prosize" name="size1"
+                                                                    value="XXL">
                                                                 <label>XXL</label>
                                                             </div>
                                                         </div>
@@ -234,7 +245,7 @@
                                                     <div class="col-md-6">
                                                         <label class="form-label">Price <span>( In USD
                                                                 )</span></label>
-                                                        <input type="number" class="form-control" id="price1">
+                                                        <input type="number" class="form-control" id="productprice">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label">Quantity</label>
@@ -252,7 +263,8 @@
                                                             data-role="tagsinput" />
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                        <button id="submitpro_form" type="submit"
+                                                            class="btn btn-primary">Submit</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -273,7 +285,8 @@
 
     <!-- Common Javascript -->
     <?php require("includes/htmlfooter.php") ?>
-    <!-- <script src="controllers/js/addproduct.js"></script> -->
+    <script src="controllers/js/addproduct.js"></script>
+
     <script>
     const loadcatgories = (() => {
         var innerel = $("#Categories")
@@ -334,9 +347,9 @@
         }
 
         , 1000
+
     );
     </script>
-    <script src="controllers/js/addproduct.js"></script>
 
 
 </body>
