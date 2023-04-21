@@ -106,15 +106,15 @@
                         </a>
                         <!-- Header Cart End -->
                         <!-- Header Cart Start -->
-                        <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
+                        <a href="index.php" class="ec-header-btn ec-side-toggle">
                             <div class="header-icon"><img src="assets/images/icons/cart.svg" class="svg_img header_svg"
                                     alt="" /></div>
-                            <span class="ec-header-count cart-count-lable">3</span>
+                            <span class="ec-header-count cart-count-lable"></span>
                         </a>
                         <!-- Header Cart End -->
-                        <a href="javascript:void(0)" class="ec-header-btn ec-sidebar-toggle">
+                        <!-- <a href="javascript:void(0)" class="ec-header-btn ec-sidebar-toggle">
                             <img src="assets/images/icons/category-icon.svg" class="svg_img header_svg" alt="icon" />
-                        </a>
+                        </a> -->
                         <!-- Header menu Start -->
                         <a href="#ec-mobile-menu" class="ec-header-btn ec-side-toggle d-lg-none">
                             <img src="assets/images/icons/menu.svg" class="svg_img header_svg" alt="icon" />
@@ -198,10 +198,10 @@
                             </a>
                             <!-- Header wishlist End -->
                             <!-- Header Cart Start -->
-                            <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
+                            <a href="cart.php" class="ec-header-btn ">
                                 <div class="header-icon"><img src="assets/images/icons/cart.svg"
                                         class="svg_img header_svg" alt="" /></div>
-                                <span class="ec-header-count cart-count-lable">3</span>
+                                <span class="ec-header-count cart-count-lable"></span>
                             </a>
                             <!-- Header Cart End -->
                         </div>
@@ -290,29 +290,6 @@
 
 
 
-                            <li class="dropdown scroll-to"><a href="javascript:void(0)"><img
-                                        src="assets/images/icons/scroll.svg" class="svg_img header_svg scroll"
-                                        alt="" /></a>
-                                <ul class="sub-menu">
-                                    <li class="menu_title">Scroll To Section</li>
-                                    <li><a href="javascript:void(0)" data-scroll="collection" class="nav-scroll">Top
-                                            Collection</a></li>
-                                    <li><a href="javascript:void(0)" data-scroll="categories"
-                                            class="nav-scroll">Categories</a></li>
-                                    <li><a href="javascript:void(0)" data-scroll="offers" class="nav-scroll">Offers</a>
-                                    </li>
-                                    <li><a href="javascript:void(0)" data-scroll="vendors" class="nav-scroll">Top
-                                            Vendors</a></li>
-                                    <li><a href="javascript:void(0)" data-scroll="services"
-                                            class="nav-scroll">Services</a></li>
-                                    <li><a href="javascript:void(0)" data-scroll="arrivals" class="nav-scroll">New
-                                            Arrivals</a></li>
-                                    <li><a href="javascript:void(0)" data-scroll="reviews" class="nav-scroll">Client
-                                            Review</a></li>
-                                    <li><a href="javascript:void(0)" data-scroll="insta" class="nav-scroll">Instagram
-                                            Feed</a></li>
-                                </ul>
-                            </li>
                         </ul>
                     </div>
                 </div>

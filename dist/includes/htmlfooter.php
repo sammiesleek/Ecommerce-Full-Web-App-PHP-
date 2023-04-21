@@ -24,5 +24,7 @@ function googleTranslateElementInit() {
 }
 </script>
 <!-- Main Js -->
+<script src="controller/js/loadcart.js"></script>
 <script src="assets/js/vendor/index.js"></script>
+
 <script src="assets/js/main.js"></script>

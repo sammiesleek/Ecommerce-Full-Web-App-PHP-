@@ -1,11 +1,20 @@
 <?php
 require_once ("includes/htmlheader.php");
 
+
+
     $query ="SELECT * from home_main_slide";
     $stmt=$conn->prepare($query);
     if($stmt->execute()){
        
         $resultslide = $stmt->get_result();
+    }
+
+    $query ="SELECT * from products";
+    $stmt=$conn->prepare($query);
+    if($stmt->execute()){
+       
+        $products = $stmt->get_result();
     }
 
     
@@ -22,56 +31,7 @@ require_once ("includes/htmlheader.php");
     <!-- Header End  -->
 
     <!--  Cart Start -->
-    <div class="ec-side-cart-overlay"></div>
-    <div id="ec-side-cart" class="ec-side-cart">
-        <div class="ec-cart-inner">
-            <div class="ec-cart-top">
-                <div class="ec-cart-title">
-                    <span class="cart_title">My Cart</span>
-                    <button class="ec-close">×</button>
-                </div>
-                <ul class="eccart-pro-items">
-                    <li>
-                        <a href="product.html" class="sidekka_pro_img"><img src="assets/images/product-image/6_1.jpg"
-                                alt="product"></a>
-                        <div class="ec-pro-content">
-                            <a href="product.html" class="cart_pro_title">T-shirt For Women</a>
-                            <span class="cart-price"><span>$76.00</span> x 1</span>
-                            <div class="qty-plus-minus">
-                                <input class="qty-input" type="text" name="ec_qtybtn" value="1" />
-                            </div>
-                            <a href="javascript:void(0)" class="remove">×</a>
-                        </div>
-                    </li>
-
-                </ul>
-            </div>
-            <div class="ec-cart-bottom">
-                <div class="cart-sub-total">
-                    <table class="table cart-table">
-                        <tbody>
-                            <tr>
-                                <td class="text-left">Sub-Total :</td>
-                                <td class="text-right">$300.00</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left">VAT (20%) :</td>
-                                <td class="text-right">$60.00</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left">Total :</td>
-                                <td class="text-right primary-color">$360.00</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="cart_btn">
-                    <a href="cart.html" class="btn btn-primary">View Cart</a>
-                    <a href="checkout.html" class="btn btn-secondary">Checkout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+      <?php require ("includes/cart.php") ?>
     <!-- ekka Cart End -->
 
     <!-- Category Sidebar start -->
@@ -161,158 +121,74 @@ require_once ("includes/htmlheader.php");
                         <!-- 1st Product tab start -->
                         <div class="tab-pane fade show active" id="tab-pro-for-all">
                             <div class="row">
-                                <!-- Product Content -->
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                    data-animation="fadeIn">
-                                    <div class="ec-product-inner">
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <a href="product.html" class="image">
-                                                    <img class="main-image" src="assets/images/product-image/1_1.jpg"
-                                                        alt="Product" />
-                                                    <img class="hover-image" src="assets/images/product-image/1_1.jpg"
-                                                        alt="Product" />
-                                                </a>
-                                                <span class="flags">
-                                                    <span class="new">New</span>
-                                                </span>
-                                                <a href="#" class="quickview" data-link-action="quickview"
-                                                    title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><img
-                                                        src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
-                                                        alt="" /></a>
-                                                <div class="ec-pro-actions">
-                                                    <a href="compare.html" class="ec-btn-group compare"
-                                                        title="Compare"><img src="assets/images/icons/compare.svg"
-                                                            class="svg_img pro_svg" alt="" /></a>
-                                                    <button title="Add To Cart" class="add-to-cart"><img
-                                                            src="assets/images/icons/cart.svg" class="svg_img pro_svg"
-                                                            alt="" /> Add To Cart</button>
-                                                    <a class="ec-btn-group wishlist" title="Wishlist"><img
-                                                            src="assets/images/icons/wishlist.svg"
-                                                            class="svg_img pro_svg" alt="" /></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title"><a href="product.html">Leather Belt
-                                                    for Men</a></h5>
-                                            <div class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star"></i>
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">$15.00</span>
-                                                <span class="new-price">$10.00</span>
-                                            </span>
-                                            <div class="ec-pro-option">
-                                                <div class="ec-pro-color">
-                                                    <span class="ec-pro-opt-label">Color</span>
-                                                    <ul class="ec-opt-swatch ec-change-img">
-                                                        <li class="active"><a href="#" class="ec-opt-clr-img"
-                                                                data-src="assets/images/product-image/5_1.jpg"
-                                                                data-src-hover="assets/images/product-image/5_1.jpg"
-                                                                data-tooltip="Gray"><span
-                                                                    style="background-color:#9e9e9e;"></span></a></li>
-                                                        <li><a href="#" class="ec-opt-clr-img"
-                                                                data-src="assets/images/product-image/5_2.jpg"
-                                                                data-src-hover="assets/images/product-image/5_2.jpg"
-                                                                data-tooltip="Orange"><span
-                                                                    style="background-color:#eb8e76;"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="ec-pro-size">
-                                                    <span class="ec-pro-opt-label">Size</span>
-                                                    <ul class="ec-opt-size">
-                                                        <li class="active"><a href="#" class="ec-opt-sz"
-                                                                data-old="$15.00" data-new="$10.00"
-                                                                data-tooltip="Small">32</a></li>
-                                                        <li><a href="#" class="ec-opt-sz" data-old="$17.00"
-                                                                data-new="$12.00" data-tooltip="Medium">34</a></li>
-                                                        <li><a href="#" class="ec-opt-sz" data-old="$20.00"
-                                                                data-new="$15.00" data-tooltip="Large">36</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                    data-animation="fadeIn">
-                                    <div class="ec-product-inner">
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <a href="product.html" class="image">
-                                                    <img class="main-image" src="assets/images/product-image/1_1.jpg"
-                                                        alt="Product" />
-                                                    <img class="hover-image" src="assets/images/product-image/1_1.jpg"
-                                                        alt="Product" />
-                                                </a>
-                                                <span class="percentage">35%</span>
-                                                <span class="flags">
-                                                    <span class="new">New</span>
-                                                </span>
-                                                <a href="#" class="quickview" data-link-action="quickview"
-                                                    title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><img
-                                                        src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
-                                                        alt="" /></a>
-                                                <div class="ec-pro-actions">
-                                                    <a href="compare.html" class="ec-btn-group compare"
-                                                        title="Compare"><img src="assets/images/icons/compare.svg"
-                                                            class="svg_img pro_svg" alt="" /></a>
-                                                    <button title="Add To Cart" class="add-to-cart"><img
-                                                            src="assets/images/icons/cart.svg" class="svg_img pro_svg"
-                                                            alt="" /> Add To Cart</button>
-                                                    <a class="ec-btn-group wishlist" title="Wishlist"><img
-                                                            src="assets/images/icons/wishlist.svg"
-                                                            class="svg_img pro_svg" alt="" /></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title"><a href="product.html">Digital Smart
-                                                    Watches</a></h5>
-                                            <div class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star"></i>
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">$100.00</span>
-                                                <span class="new-price">$80.00</span>
-                                            </span>
-                                            <div class="ec-pro-option">
-                                                <div class="ec-pro-color">
-                                                    <span class="ec-pro-opt-label">Color</span>
-                                                    <ul class="ec-opt-swatch ec-change-img">
-                                                        <li class="active"><a href="#" class="ec-opt-clr-img"
-                                                                data-src="assets/images/product-image/8_2.jpg"
-                                                                data-src-hover="assets/images/product-image/8_2.jpg"
-                                                                data-tooltip="Gray"><span
-                                                                    style="background-color:#e9dddd;"></span></a></li>
-                                                        <li><a href="#" class="ec-opt-clr-img"
-                                                                data-src="assets/images/product-image/8_3.jpg"
-                                                                data-src-hover="assets/images/product-image/8_3.jpg"
-                                                                data-tooltip="Orange"><span
-                                                                    style="background-color:#ffd5cb;"></span></a></li>
-                                                        <li><a href="#" class="ec-opt-clr-img"
-                                                                data-src="assets/images/product-image/8_4.jpg"
-                                                                data-src-hover="assets/images/product-image/8_4.jpg"
-                                                                data-tooltip="Green"><span
-                                                                    style="background-color:#92e4fd;"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
+                            <?php
+
+                                while($row = $products->fetch_assoc()){
+
+                                    $productid = $row['product_id'];
+                                    $productname = $row['product_name'];
+                                    $mainimg = $row['main_img'];
+                                    $altimg = $row['altimg'];
+                                    $picture1 = $row['thumb1'];
+                                    $currentPrice = $row['current_price'];
+                                    $reduced_price = $row['current_price'];
+
+
+
+                                
+
+
+                                echo '
+                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
+                                    data-animation="fadeIn">
+                                    <div class="ec-product-inner">
+                                        <div class="ec-pro-image-outer">
+                                            <div class="ec-pro-image">
+                                                <a href="product.php" class="image">
+                                                    <img class="main-image" src="admin/product_images/'.$mainimg.'"
+                                                        alt="Product" />
+                                                    <img class="hover-image" src="admin/product_images/'.$altimg.'"
+                                                        alt="Product" />
+                                                </a>
+                                                <span class="flags">
+                                                    <span class="new">New</span>
+                                                </span>
+                                                
+                                                <div class="ec-pro-actions">
+                                                   
+                                                    <button data-productid="'.$productid.'" title="Add To Cart" class="add-to-cart"><img
+                                                src="assets/images/icons/cart.svg" class="svg_img pro_svg"
+                                                            alt="" /> Add To Cart</button>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ec-pro-content">
+                                            <h5 class="ec-pro-title"><a href="product.php?product_id='.$productid.'">'.$productname.'</a></h5>
+                                            <div class="ec-pro-rating">
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star"></i>
+                                            </div>
+                                            <span class="ec-price">
+                                                <span class="old-price">$'.$reduced_price.'</span>
+                                                <span class="new-price">$ '.$currentPrice.'</span>
+                                            </span>
+                                            <div class="ec-pro-option">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                ';
+                            }
+
+
+                            ?>
+                                <!-- Product Content -->
                                 <div class="col-sm-12 shop-all-btn"><a href="shop.html">Shop All
                                         Collection</a></div>
                             </div>
@@ -1182,65 +1058,7 @@ require_once ("includes/htmlheader.php");
     </section>
     <!-- Feature & Special Section End -->
 
-    <!--  Top Vendor Section Start -->
-    <section class="section section-space-p" id="vendors">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <div class="section-title">
-                        <h2 class="ec-bg-title">Top Vendor</h2>
-                        <h2 class="ec-title">Top Vendor</h2>
-                        <p class="sub-title">Browse The Collection of <a href="catalog-multi-vendor.html">All
-                                Vendors.</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="row margin-minus-t-15 margin-minus-b-15">
-                <div class="col-sm-12 col-md-6 col-lg-3 ec_ven_content" data-animation="zoomIn">
-                    <div class="ec-vendor-card">
-                        <div class="ec-vendor-detail">
-                            <div class="ec-vendor-avtar">
-                                <img src="assets/images/vendor/2.jpg" alt="vendor img">
-                            </div>
-                            <div class="ec-vendor-info">
-                                <a href="catalog-single-vendor.html" class="name">Marvelus</a>
-                                <p class="prod-count">154 Products</p>
-                                <div class="ec-pro-rating">
-                                    <i class="ecicon eci-star fill"></i>
-                                    <i class="ecicon eci-star fill"></i>
-                                    <i class="ecicon eci-star fill"></i>
-                                    <i class="ecicon eci-star fill"></i>
-                                    <i class="ecicon eci-star"></i>
-                                </div>
-                                <div class="ec-sale">
-                                    <p title="Weekly sales">Sales 954</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ec-vendor-prod">
-                            <div class="ec-prod-img">
-                                <a href="product.html"><img src="assets/images/product-image/1_1.jpg"
-                                        alt="vendor img"></a>
-                            </div>
-                            <div class="ec-prod-img">
-                                <a href="product.html"><img src="assets/images/product-image/2_1.jpg"
-                                        alt="vendor img"></a>
-                            </div>
-                            <div class="ec-prod-img">
-                                <a href="product.html"><img src="assets/images/product-image/3_1.jpg"
-                                        alt="vendor img"></a>
-                            </div>
-                            <div class="ec-prod-img">
-                                <a href="product.html"><img src="assets/images/product-image/4_1.jpg"
-                                        alt="vendor img"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--  Top Vendor Section End -->
+   
 
     <!--  services Section Start -->
     <section class="section ec-services-section section-space-p" id="services">
@@ -1734,7 +1552,7 @@ require_once ("includes/htmlheader.php");
     <!-- Modal end -->
 
     <!-- Newsletter Modal Start -->
-    <div id="ec-popnews-bg"></div>
+    <!-- <div id="ec-popnews-bg"></div>
     <div id="ec-popnews-box">
         <div id="ec-popnews-close"><i class="ecicon eci-close"></i></div>
         <div class="row">
@@ -1752,7 +1570,7 @@ require_once ("includes/htmlheader.php");
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Newsletter Modal end -->
 
     <!-- Footer navigation panel for responsive display -->
@@ -1760,7 +1578,7 @@ require_once ("includes/htmlheader.php");
     <!-- Footer navigation panel for responsive display end -->
 
     <!-- Recent Purchase Popup  -->
-    <div class="recent-purchase">
+    <!-- <div class="recent-purchase">
         <img src="assets/images/product-image/1.jpg" alt="payment image">
         <div class="detail">
             <p>Someone in new just bought</p>
@@ -1768,185 +1586,22 @@ require_once ("includes/htmlheader.php");
             <p>10 Minutes ago</p>
         </div>
         <a href="javascript:void(0)" class="icon-btn recent-close">×</a>
-    </div>
+    </div> -->
     <!-- Recent Purchase Popup end -->
 
     <!-- Cart Floating Button -->
     <div class="ec-cart-float">
-        <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
+        <a href="cart.php" class="ec-header-btn ec-side-toggle">
             <div class="header-icon"><img src="assets/images/icons/cart.svg" class="svg_img header_svg" alt="cart" />
             </div>
-            <span class="ec-cart-count cart-count-lable">3</span>
+            <span class="ec-cart-count cart-count-lable"></span>
         </a>
     </div>
     <!-- Cart Floating Button end -->
 
-    <!-- Whatsapp -->
-    <div class="ec-style ec-right-bottom">
-        <!-- Start Floating Panel Container -->
-        <div class="ec-panel">
-            <!-- Panel Header -->
-            <div class="ec-header">
-                <strong>Need Help?</strong>
-                <p>Chat with us on WhatsApp</p>
-            </div>
-            <!-- Panel Content -->
-            <div class="ec-body">
-                <ul>
-                    <!-- Start Single Contact List -->
-                    <li>
-                        <a class="ec-list" data-number="918866774266"
-                            data-message="Please help me! I have got wrong product - ORDER ID is : #654321485">
-                            <div class="d-flex bd-highlight">
-                                <!-- Profile Picture -->
-                                <div class="ec-img-cont">
-                                    <img src="assets/images/whatsapp/profile_01.jpg" class="ec-user-img"
-                                        alt="Profile image">
-                                    <span class="ec-status-icon"></span>
-                                </div>
-                                <!-- Display Name & Last Seen -->
-                                <div class="ec-user-info">
-                                    <span>Sahar Darya</span>
-                                    <p>Sahar left 7 mins ago</p>
-                                </div>
-                                <!-- Chat iCon -->
-                                <div class="ec-chat-icon">
-                                    <i class="fa fa-whatsapp"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <!--/ End Single Contact List -->
-                    <!-- Start Single Contact List -->
-                    <li>
-                        <a class="ec-list" data-number="918866774266"
-                            data-message="Please help me! I have got wrong product - ORDER ID is : #654321485">
-                            <div class="d-flex bd-highlight">
-                                <!-- Profile Picture -->
-                                <div class="ec-img-cont">
-                                    <img src="assets/images/whatsapp/profile_02.jpg" class="ec-user-img"
-                                        alt="Profile image">
-                                    <span class="ec-status-icon ec-online"></span>
-                                </div>
-                                <!-- Display Name & Last Seen -->
-                                <div class="ec-user-info">
-                                    <span>Yolduz Rafi</span>
-                                    <p>Yolduz is online</p>
-                                </div>
-                                <!-- Chat iCon -->
-                                <div class="ec-chat-icon">
-                                    <i class="fa fa-whatsapp"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <!--/ End Single Contact List -->
-                    <!-- Start Single Contact List -->
-                    <li>
-                        <a class="ec-list" data-number="918866774266"
-                            data-message="Please help me! I have got wrong product - ORDER ID is : #654321485">
-                            <div class="d-flex bd-highlight">
-                                <!-- Profile Picture -->
-                                <div class="ec-img-cont">
-                                    <img src="assets/images/whatsapp/profile_03.jpg" class="ec-user-img"
-                                        alt="Profile image">
-                                    <span class="ec-status-icon ec-offline"></span>
-                                </div>
-                                <!-- Display Name & Last Seen -->
-                                <div class="ec-user-info">
-                                    <span>Nargis Hawa</span>
-                                    <p>Nargis left 30 mins ago</p>
-                                </div>
-                                <!-- Chat iCon -->
-                                <div class="ec-chat-icon">
-                                    <i class="fa fa-whatsapp"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <!--/ End Single Contact List -->
-                    <!-- Start Single Contact List -->
-                    <li>
-                        <a class="ec-list" data-number="918866774266"
-                            data-message="Please help me! I have got wrong product - ORDER ID is : #654321485">
-                            <div class="d-flex bd-highlight">
-                                <!-- Profile Picture -->
-                                <div class="ec-img-cont">
-                                    <img src="assets/images/whatsapp/profile_04.jpg" class="ec-user-img"
-                                        alt="Profile image">
-                                    <span class="ec-status-icon ec-offline"></span>
-                                </div>
-                                <!-- Display Name & Last Seen -->
-                                <div class="ec-user-info">
-                                    <span>Khadija Mehr</span>
-                                    <p>Khadija left 50 mins ago</p>
-                                </div>
-                                <!-- Chat iCon -->
-                                <div class="ec-chat-icon">
-                                    <i class="fa fa-whatsapp"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <!--/ End Single Contact List -->
-                </ul>
-            </div>
-        </div>
-        <!--/ End Floating Panel Container -->
-        <!-- Start Right Floating Button-->
-        <div class="ec-right-bottom">
-            <div class="ec-box">
-                <div class="ec-button rotateBackward">
-                    <img class="whatsapp" src="assets/images/common/whatsapp.png" alt="whatsapp icon">
-                </div>
-            </div>
-        </div>
-        <!--/ End Right Floating Button-->
-    </div>
-    <!-- Whatsapp end -->
-
-
+  
     <?php require("includes/htmlfooter.php")   ?>
-    <!-- <script src="controller/js/loadslide.js"></script> -->
-    <script>
-    $(document).ready(() => {
-        setTimeout(() => {
-
-            const target = document.querySelectorAll(".parent_cat")
-
-            target.forEach((element) => {
-
-
-                var elementId = element.id
-                var elementtarget = element.id
-
-
-                var desti = $("." + elementtarget)
-
-                $.ajax({
-                    type: 'post',
-                    data: {
-                        id: elementId,
-                        elementId: elementtarget
-                    },
-                    url: 'admin/controllers/load_sub_category.php',
-                    success: function(data, status) {
-                        desti.html(data)
-                    }
-
-                })
-
-
-            });
-
-
-
-        }, 1000);
-
-
-
-    })
-    </script>
+   
 
 
 

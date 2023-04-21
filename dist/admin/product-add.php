@@ -58,7 +58,24 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="avatar-upload">
+                                                        <div class="avatar-edit">
+                                                            <input type='file' id="mainalt" name="mainalt"
+                                                                class="xc ec-image-upload" accept=".png, .jpg, .jpeg" />
+                                                            <label for="imageUpload"><img
+                                                                    src="assets/img/icons/edit.svg"
+                                                                    class="svg_img header_svg" alt="edit" /></label>
+                                                        </div>
+                                                        <div class="avatar-preview ec-preview">
+                                                            <div class="imagePreview ec-div-preview">
+                                                                <img class="ec-image-preview"
+                                                                    src="assets/img/products/vender-upload-preview.jpg"
+                                                                    alt="edit" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div class="thumb-upload-set col-md-12">
+                                                        
                                                         <div class="thumb-upload">
                                                             <div class="thumb-edit">
                                                                 <input type='file' id="samp01"
@@ -147,7 +164,8 @@
                                                         </div>
                                                         <div class="thumb-upload">
                                                             <div class="thumb-edit">
-                                                                <input type='file' id="samp06" class="ec-image-upload"
+                                                                <input type='file' id="samp06"
+                                                                    class="thumbnails ec-image-upload"
                                                                     accept=".png, .jpg, .jpeg" />
                                                                 <label for="imageUpload"><img
                                                                         src="assets/img/icons/edit.svg"
@@ -175,8 +193,15 @@
                                                             id="productname">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label">Select Categories</label>
+                                                        <label class="form-label">Select Category</label>
                                                         <select name="categories" id="Categories" class="form-select">
+
+
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Select SubCategory</label>
+                                                        <select name="subcategories" id="subCategories" class="form-select">
 
 
                                                         </select>
@@ -249,7 +274,7 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label">Quantity</label>
-                                                        <input type="number" class="form-control" id="quantity1">
+                                                        <input type="number" class="form-control" id="productquantity">
                                                     </div>
                                                     <div class="col-md-12">
                                                         <label class="form-label">Ful Detail</label>
@@ -310,45 +335,33 @@
     loadcatgories();
 
 
-    // load sub categories
 
+    // load sub categories  
+    var desti = $("#subCategories")
+    setTimeout(()=>{
 
+        const rload =()=>{
+            const deter = $("#Categories").val()
 
-    setTimeout(
-
-        () => {
-
-            const target = document.querySelectorAll(".option_body")
-
-            target.forEach((element) => {
-                var elementId = element.id
-                var elementtarget = element.id
-                var desti = $("#" + elementtarget)
-
-                $.ajax({
+             $.ajax({
                     type: 'post',
                     data: {
-                        id: elementId,
+                        id: deter,
                         type: 'addproduct'
                     },
                     url: 'controllers/load_sub_category.php',
                     success: function(data, status) {
                         desti.html(data)
-                        // console.log(data)
                     }
 
                 })
-
-
-            });
-
-
-
+        
         }
+        rload()
+        $("#Categories").change(rload)
+      
+    },100)
 
-        , 1000
-
-    );
     </script>
 
 

@@ -18,8 +18,9 @@ if ($stmt->execute()) {
 
                  $output .= '
             
-              <optgroup class="option_body" id="'.$cat_name.'" label="'.$cat_name.'">
-                </optgroup>           
+              <option class="option_body" id="'.$cat_name.'" label="'.$cat_name.'" value="'.$cat_name.'">
+
+                </option>           
             ';
 
             }
