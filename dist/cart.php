@@ -68,7 +68,7 @@
                                         <div class="col-lg-12">
                                             <div class="ec-cart-update-bottom">
                                                 <a href="index.php">Continue Shopping</a>
-                                                <button class="btn btn-primary">Check Out</button>
+                                                <button id="checkout_btn" class="btn btn-primary">Check Out</button>
                                             </div>
                                         </div>
                                     </div>
@@ -154,7 +154,7 @@
                                         </div>
                                         <div class="ec-cart-summary-total">
                                             <span class="text-left">Total Amount</span>
-                                            <span class="text-right">$80.00</span>
+                                            <span class="text-right">$0</span>
                                         </div>
                                     </div>
 
@@ -581,34 +581,7 @@
     <!-- Modal end -->
 
     <!-- Footer navigation panel for responsive display -->
-    <div class="ec-nav-toolbar">
-        <div class="container">
-            <div class="ec-nav-panel">
-                <div class="ec-nav-panel-icons">
-                    <a href="#ec-mobile-menu" class="navbar-toggler-btn ec-header-btn ec-side-toggle"><img
-                            src="assets/images/icons/menu.svg" class="svg_img header_svg" alt="" /></a>
-                </div>
-                <div class="ec-nav-panel-icons">
-                    <a href="#ec-side-cart" class="toggle-cart ec-header-btn ec-side-toggle"><img
-                            src="assets/images/icons/cart.svg" class="svg_img header_svg" alt="" /><span
-                            class="ec-cart-noti ec-header-count cart-count-lable">3</span></a>
-                </div>
-                <div class="ec-nav-panel-icons">
-                    <a href="index.html" class="ec-header-btn"><img src="assets/images/icons/home.svg"
-                            class="svg_img header_svg" alt="icon" /></a>
-                </div>
-                <div class="ec-nav-panel-icons">
-                    <a href="wishlist.html" class="ec-header-btn"><img src="assets/images/icons/wishlist.svg"
-                            class="svg_img header_svg" alt="icon" /><span class="ec-cart-noti">4</span></a>
-                </div>
-                <div class="ec-nav-panel-icons">
-                    <a href="login.html" class="ec-header-btn"><img src="assets/images/icons/user.svg"
-                            class="svg_img header_svg" alt="icon" /></a>
-                </div>
-
-            </div>
-        </div>
-    </div>
+     <?php include('includes/mobilenavigation.php') ?>
     <!-- Footer navigation panel for responsive display end -->
 
     <!-- Recent Purchase Popup  -->
@@ -624,12 +597,7 @@
     <!-- Recent Purchase Popup end -->
 
     <!-- Cart Floating Button -->
-    <div class="ec-cart-float">
-        <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
-            <div class="header-icon"><img src="assets/images/icons/cart.svg" class="svg_img header_svg" alt="" /></div>
-            <span class="ec-cart-count cart-count-lable">3</span>
-        </a>
-    </div>
+ <?php include('includes/floatingcart.php') ?>    
     <!-- Cart Floating Button end -->
 
     <!-- Whatsapp -->
@@ -833,22 +801,6 @@
 
   <script>
 
-
-//     productsid.forEach((element) => {
-//   // if (element.len > 5) {
-//   $.ajax({
-//     url: "controller/loadcart.php",
-//     type: "post",
-//     data: {
-//         type:'cartpage',
-//       productid: element,
-//     },
-//     success: function (data, success) {
-//       $("#cartpgbd").append(data);
-//     },
-//   });
-//   // }
-// });
 
 
 

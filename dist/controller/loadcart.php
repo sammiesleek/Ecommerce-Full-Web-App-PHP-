@@ -18,6 +18,7 @@ use function PHPSTORM_META\type;
         $result = $stmt->get_result();
         $product=$result->fetch_assoc();
 
+
         if($type == 'cartpop'){
 
             $output .= '
@@ -37,10 +38,10 @@ use function PHPSTORM_META\type;
             ';
         }
 
-        if($type == 'cartpage'){
+        if($type == 'cartpage' ){
             $output.= '
             
-                <tr>
+                <tr id="indpro">
                 <td data-label="Product" class="ec-cart-pro-name"><a
                             href="product.php?product_id='.$product['product_id'].'"><img
                             class="ec-cart-pro-img mr-4"

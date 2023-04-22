@@ -7,6 +7,18 @@ const proid = JSON.parse(localStorage.getItem("productsid"));
 
 $(".cart-count-lable").html(proid.filter((id) => id !== "remove").length);
 
+var totalds = $(".ec-cart-summary-total").find(".text-right");
+const addtotal = () => {
+  var total = 0;
+  // totalds.text(parseFloat(total));
+
+  $(".ec-cart-pro-subtotal").each(function () {
+    total += parseFloat($(this).text());
+    totalds.text("$" + "" + total);
+  });
+};
+setTimeout(addtotal, 500);
+
 $(document).ready(() => {
   setTimeout(() => {
     const target = document.querySelectorAll(".parent_cat");
@@ -483,21 +495,25 @@ function ecCheckCookie() {
 
   // load cart from db
   const loadpgcat = () => {
-    productsid.forEach((element) => {
-      // if (element.len > 5) {
-      $.ajax({
-        url: "../dist/controller/loadcart.php",
-        type: "post",
-        data: {
-          type: "cartpage",
-          productid: element,
-        },
-        success: function (data, success) {
-          $("#cartpgbd").append(data);
-        },
+    if (productsid.filter((tag) => tag != "remove").length > 0) {
+      productsid.forEach((element) => {
+        $.ajax({
+          url: "../dist/controller/loadcart.php",
+          type: "post",
+          data: {
+            type: "cartpage",
+            productid: element,
+          },
+          success: function (data, success) {
+            $("#cartpgbd").append(data);
+          },
+        });
       });
-      // }
-    });
+    } else {
+      $("#cartpgbd").append(
+        '<span class="emptycart"  style="padding:20px 0px; display:block; text-align:center">Your Cart is Empty</span>'
+      );
+    }
   };
   loadpgcat();
 
@@ -520,6 +536,7 @@ function ecCheckCookie() {
       localStorage.setItem("productsid", JSON.stringify(purged));
       // const savedproid = JSON.parse(localStorage.getItem("productsid"));
       // loadcat();
+
       $(".ec-cart-float").fadeIn();
 
       var count = purged.length;
@@ -546,10 +563,36 @@ function ecCheckCookie() {
       var updatedproid = inproid.filter((item) => item !== proidd);
 
       localStorage.setItem("productsid", JSON.stringify(updatedproid));
+
+      // updating cart total
+      var proquat = $(this)
+        .parent()
+        .parent()
+        .children(".ec-cart-pro-qty")
+        .children(".cart-qty-plus-minus")
+        .find(".cart-plus-minus")
+        .val();
+      var prodprice = $(this)
+        .parent()
+        .parent()
+        .find(".ec-cart-pro-price")
+        .find("span")
+        .text();
+      var totlds = $(".ec-cart-summary-total").find(".text-right");
+      var valca = parseFloat(totlds.text().slice(1));
+      var cals = proquat * parseFloat(prodprice);
+      var updtval = parseFloat(valca) - cals;
+      totlds.text("$" + updtval);
+
       $(".ec-cart-float").fadeIn();
       const savedroid = JSON.parse(localStorage.getItem("productsid"));
 
       $(".cart-count-lable").html(updatedproid.length);
+      if (updatedproid.length < 1) {
+        $("#cartpgbd").append(
+          '<span class="emptycart"  style="padding:20px 0px; display:block; text-align:center">Your Cart is Empty</span>'
+        );
+      }
 
       if (
         proidd ===
@@ -697,7 +740,7 @@ function ecCheckCookie() {
   /*----------------------------- Product Image Zoom --------------------------------*/
   $(".zoom-image-hover").zoom();
 
-  /*----------------------------- Quantity  Button  ------------------------------ */
+  /*----------------------------- Quantity  Button  modal------------------------------ */
 
   setTimeout(() => {
     var QtyPlusMinus = $(".qty-plus-minus");
@@ -705,7 +748,7 @@ function ecCheckCookie() {
     QtyPlusMinus.prepend('<div class="dec ec_qtybtn">-</div>');
     QtyPlusMinus.append('<div class="inc ec_qtybtn">+</div>');
 
-    $("body").on("click", ".ec_qtybtn", function () {
+    $("body").on("click", ".ec_qtybtsn", function () {
       // $(".ec_qtybtn").on("click", function() {
       var $qtybutton = $(this);
       var QtyoldValue = $qtybutton.parent().find("input").val();
@@ -715,11 +758,17 @@ function ecCheckCookie() {
 
       if ($qtybutton.text() === "+" && QtyoldValue <= maxquantity) {
         var QtynewVal = parseFloat(QtyoldValue) + 1;
+        console.log($(this).parent().parent());
+
+        var totlds = $(".ec-cart-summary-total").find(".text-right");
       } else if ($qtybutton.text() === "-" && QtyoldValue > 1) {
         var QtynewVal = parseFloat(QtyoldValue) - 1;
       } else {
         QtynewVal = 1;
       }
+
+      console.log("first");
+      setTimeout(addtotal, 200);
 
       $qtybutton.parent().find("input").val(QtynewVal);
     });
@@ -1403,13 +1452,20 @@ function ecCheckCookie() {
           .parent()
           .find("input")
           .val();
+        var totlds = $(".ec-cart-summary-total").find(".text-right");
+        var valca = parseFloat(totlds.text().slice(1));
         if (
           $cartqtybutton.text() === "+" &&
           CartQtyoldValue <= maxquantity - 1
         ) {
           var CartQtynewVal = parseFloat(CartQtyoldValue) + 1;
+
+          var updtval = parseFloat(proprice) + parseFloat(valca);
+          totalds.text("$" + updtval);
         } else if ($cartqtybutton.text() === "-" && CartQtyoldValue > 1) {
           var CartQtynewVal = parseFloat(CartQtyoldValue) - 1;
+          var updtval = parseFloat(valca) - parseFloat(proprice);
+          totalds.text("$" + updtval);
         } else {
           CartQtynewVal = 1;
         }

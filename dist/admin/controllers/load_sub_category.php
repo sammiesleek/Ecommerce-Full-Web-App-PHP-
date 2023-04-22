@@ -28,7 +28,13 @@ if (isset($_POST['id'])) {
                     $output .= '
                 <li>
                      <a href="shop.php">'.$title.'</a>
-                  </li>k
+                  </li>
+                
+                 ';
+            };
+             if($type == "loadsubcatmobile") {
+                    $output .= '
+                 <li><a href="shop.php">'.$title.'</a></li>
                 
                  ';
             }

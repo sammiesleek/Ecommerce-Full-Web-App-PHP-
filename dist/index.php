@@ -1590,17 +1590,46 @@ require_once ("includes/htmlheader.php");
     <!-- Recent Purchase Popup end -->
 
     <!-- Cart Floating Button -->
-    <div class="ec-cart-float">
-        <a href="cart.php" class="ec-header-btn ec-side-toggle">
-            <div class="header-icon"><img src="assets/images/icons/cart.svg" class="svg_img header_svg" alt="cart" />
-            </div>
-            <span class="ec-cart-count cart-count-lable"></span>
-        </a>
-    </div>
+    <?php include('includes/floatingcart.php') ?> 
     <!-- Cart Floating Button end -->
 
   
     <?php require("includes/htmlfooter.php")   ?>
+
+
+    <script>
+        setTimeout(()=>{
+
+        var catbody =  $(".mbcatbd") 
+            catbody.each(function(){
+                
+                var catid=$(this).children(".tra_cker").text();
+                var catdest = $(this).children(".sub-menu")
+
+                $.ajax(
+                    {
+                        type:'post',
+                        data:{
+                            type:"loadsubcatmobile",
+                            id:catid
+                        },
+                         url: "admin/controllers/load_sub_category.php",
+                         success:function(data,status,state){
+                            catdest.append(data)
+
+                         }
+
+                    }
+                )
+
+            })
+
+
+        },300)
+
+
+
+    </script>i
    
 
 

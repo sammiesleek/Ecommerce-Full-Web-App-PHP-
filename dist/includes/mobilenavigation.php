@@ -6,9 +6,9 @@
                          src="assets/images/icons/menu.svg" class="svg_img header_svg" alt="icon" /></a>
              </div>
              <div class="ec-nav-panel-icons">
-                 <a href="#ec-side-cart" class="toggle-cart ec-header-btn ec-side-toggle"><img
+                 <a href="cart.php" class=" ec-header-btn "><img
                          src="assets/images/icons/cart.svg" class="svg_img header_svg" alt="icon" /><span
-                         class="ec-cart-noti ec-header-count cart-count-lable">3</span></a>
+                         class="ec-cart-noti ec-header-count cart-count-lable">0</span></a>
              </div>
              <div class="ec-nav-panel-icons">
                  <a href="index.php" class="ec-header-btn"><img src="assets/images/icons/home.svg"

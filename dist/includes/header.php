@@ -4,9 +4,11 @@
     $stmt->execute();
     $catresult= $stmt->get_result();
 
-    
 
-
+    $query ="SELECT * FROM categories ";
+    $stmt=$conn->prepare($query);
+    $stmt->execute();
+    $cartresult= $stmt->get_result();
 ?>
 
 <header class="ec-header">
@@ -102,11 +104,11 @@
                         <a href="wishlist.php" class="ec-header-btn ec-header-wishlist">
                             <div class="header-icon"><img src="assets/images/icons/wishlist.svg"
                                     class="svg_img header_svg" alt="" /></div>
-                            <span class="ec-header-count">4</span>
+                            <span class="ec-header-count">0</span>
                         </a>
                         <!-- Header Cart End -->
                         <!-- Header Cart Start -->
-                        <a href="index.php" class="ec-header-btn ec-side-toggle">
+                        <a href="cart.php" class="ec-header-btn">
                             <div class="header-icon"><img src="assets/images/icons/cart.svg" class="svg_img header_svg"
                                     alt="" /></div>
                             <span class="ec-header-count cart-count-lable"></span>
@@ -194,7 +196,7 @@
                             <a href="wishlist.php" class="ec-header-btn ec-header-wishlist">
                                 <div class="header-icon"><img src="assets/images/icons/wishlist.svg"
                                         class="svg_img header_svg" alt="" /></div>
-                                <span class="ec-header-count">4</span>
+                                <span class="ec-header-count">0</span>
                             </a>
                             <!-- Header wishlist End -->
                             <!-- Header Cart Start -->
@@ -225,7 +227,7 @@
                     </div>
                 </div>
                 <!-- Ec Header Logo End -->
-                <!-- Ec Header Search Start -->
+                <!-- Ec Header Search for mobile Start -->
                 <div class="col">
                     <div class="header-search">
                         <form class="ec-btn-group-form" action="#">
@@ -309,50 +311,29 @@
                     <li><a href="index.php">Home</a></li>
                     <li><a href="javascript:void(0)">Categories</a>
                         <ul class="sub-menu">
-                            <li>
-                                <a href="javascript:void(0)">Classic Variation</a>
-                                <ul class="sub-menu">
-                                    <li><a href="shop.php">Left sidebar 3 column</a></li>
-                                    <li><a href="shop-left-sidebar-col-4.php">Left sidebar 4 column</a></li>
-                                    <li><a href="shop-right-sidebar-col-3.php">Right sidebar 3 column</a></li>
-                                    <li><a href="shop-right-sidebar-col-4.php">Right sidebar 4 column</a></li>
-                                    <li><a href="shop-full-width.php">Full width 4 column</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">Classic Variation</a>
-                                <ul class="sub-menu">
-                                    <li><a href="shop-banner.php">Banner left sidebar 3
-                                            column</a></li>
-                                    <li><a href="shop-banner-left-sidebar-col-4.php">Banner left sidebar 4
-                                            column</a></li>
-                                    <li><a href="shop-banner-right-sidebar-col-3.php">Banner right sidebar 3
-                                            column</a></li>
-                                    <li><a href="shop-banner-right-sidebar-col-4.php">Banner right sidebar 4
-                                            column</a></li>
-                                    <li><a href="shop-banner-full-width.php">Banner Full width 4 column</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">Columns Variation</a>
-                                <ul class="sub-menu">
-                                    <li><a href="shop-full-width-col-3.php">3 Columns full width</a></li>
-                                    <li><a href="shop-full-width-col-4.php">4 Columns full width</a></li>
-                                    <li><a href="shop-full-width-col-5.php">5 Columns full width</a></li>
-                                    <li><a href="shop-full-width-col-6.php">6 Columns full width</a></li>
-                                    <li><a href="shop-banner-full-width-col-3.php">Banner 3 Columns</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">List Variation</a>
-                                <ul class="sub-menu">
-                                    <li><a href="shop-list-left-sidebar.php">Shop left sidebar</a></li>
-                                    <li><a href="shop-list-right-sidebar.php">Shop right sidebar</a></li>
-                                    <li><a href="shop-list-banner-left-sidebar.php">Banner left sidebar</a></li>
-                                    <li><a href="shop-list-banner-right-sidebar.php">Banner right sidebar</a></li>
-                                    <li><a href="shop-list-full-col-2.php">Full width 2 columns</a></li>
-                                </ul>
-                            </li>
+                            
+                                        <?php 
+                                        while($cartdata= $cartresult->fetch_assoc()){
+                                            $name = $cartdata['cat_title'];
+                                            $cat_id = $cartdata['cat_id'];
+
+
+
+                                          echo '  <li class="mbcatbd">
+                                                <a class="tra_cker" href="javascript:void(0)">'. $name.'</a>
+                                                <ul class="sub-menu">
+                                                  
+                                                </ul>
+                                            </li>
+                                            ';
+
+                                        }
+
+                                 ?>
+
+
+
+                            
                             <li><a class="p-0" href="shop.php"><img class="img-responsive"
                                         src="assets/images/menu-banner/1.jpg" alt=""></a>
                             </li>
@@ -390,108 +371,7 @@
                             <li><a href="product-gallery-full-width.php">Gallery full width</a></li>
                         </ul>
                     </li>
-                    <li><a href="javascript:void(0)">Others</a>
-                        <ul class="sub-menu">
-                            <li><a href="javascript:void(0)">Mail Confirmation</a>
-                                <ul class="sub-menu">
-                                    <li><a href="email-template-confirm-1.php">Mail Confirmation 1</a></li>
-                                    <li><a href="email-template-confirm-2.php">Mail Confirmation 2</a></li>
-                                    <li><a href="email-template-confirm-3.php">Mail Confirmation 3</a></li>
-                                    <li><a href="email-template-confirm-4.php">Mail Confirmation 4</a></li>
-                                    <li><a href="email-template-confirm-5.php">Mail Confirmation 5</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="javascript:void(0)">Mail Reset password</a>
-                                <ul class="sub-menu">
-                                    <li><a href="email-template-forgot-password-1.php">Reset password 1</a></li>
-                                    <li><a href="email-template-forgot-password-2.php">Reset password 2</a></li>
-                                    <li><a href="email-template-forgot-password-3.php">Reset password 3</a></li>
-                                    <li><a href="email-template-forgot-password-4.php">Reset password 4</a></li>
-                                    <li><a href="email-template-forgot-password-5.php">Reset password 5</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="javascript:void(0)">Mail Promotional</a>
-                                <ul class="sub-menu">
-                                    <li><a href="email-template-offers-1.php">Offer Mail 1</a></li>
-                                    <li><a href="email-template-offers-2.php">Offer Mail 2</a></li>
-                                    <li><a href="email-template-offers-3.php">Offer Mail 3</a></li>
-                                    <li><a href="email-template-offers-4.php">Offer Mail 4</a></li>
-                                    <li><a href="email-template-offers-5.php">Offer Mail 5</a></li>
-                                    <li><a href="email-template-offers-6.php">Offer Mail 6</a></li>
-                                    <li><a href="email-template-offers-7.php">Offer Mail 7</a></li>
-                                    <li><a href="email-template-offers-8.php">Offer Mail 8</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="javascript:void(0)">Vendor Account Pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="vendor-dashboard.php">Vendor Dashboard</a></li>
-                                    <li><a href="vendor-profile.php">Vendor Profile</a></li>
-                                    <li><a href="vendor-uploads.php">Vendor Uploads</a></li>
-                                    <li><a href="vendor-settings.php">Vendor Settings</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="javascript:void(0)">User Account Pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="user-profile.php">User Profile</a></li>
-                                    <li><a href="user-history.php">User History</a></li>
-                                    <li><a href="wishlist.php">Wishlist</a></li>
-                                    <li><a href="track-order.php">Track Order</a></li>
-                                    <li><a href="invoice.php">User Invoice</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="javascript:void(0)">Construction Pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="404-error-page.php">404 Error Page</a></li>
-                                    <li><a href="under-maintenance.php">Maintenance Page</a></li>
-                                    <li><a href="coming-soon.php">Comming Soon Page</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="javascript:void(0)">Vendor Catalog Pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="catalog-single-vendor.php">Catalog Single Vendor</a></li>
-                                    <li><a href="catalog-multi-vendor.php">Catalog Multi Vendor</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="javascript:void(0)">Pages</a>
-                        <ul class="sub-menu">
-                            <li><a href="about-us.php">About Us</a></li>
-                            <li><a href="contact-us.php">Contact Us</a></li>
-                            <li><a href="cart.php">Cart</a></li>
-                            <li><a href="checkout.php">Checkout</a></li>
-                            <li><a href="compare.php">Compare</a></li>
-                            <li><a href="faq.php">FAQ</a></li>
-                            <li><a href="login.php">Login</a></li>
-                            <li><a href="register.php">Register</a></li>
-                            <li><a href="track-order.php">Track Order</a></li>
-                            <li><a href="terms-condition.php">Terms Condition</a></li>
-                            <li><a href="privacy-policy.php">Privacy Policy</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a href="javascript:void(0)">Blog</a>
-                        <ul class="sub-menu">
-                            <li><a href="blog-left-sidebar.php">Blog left sidebar</a></li>
-                            <li><a href="blog-right-sidebar.php">Blog right sidebar</a></li>
-                            <li><a href="blog-detail-left-sidebar.php">Blog detail left sidebar</a></li>
-                            <li><a href="blog-detail-right-sidebar.php">Blog detail right sidebar</a></li>
-                            <li><a href="blog-full-width.php">Blog full width</a></li>
-                            <li><a href="blog-detail-full-width.php">Blog detail full width</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a href="javascript:void(0)">Elements</a>
-                        <ul class="sub-menu">
-                            <li><a href="elemets-products.php">Products</a></li>
-                            <li><a href="elemets-typography.php">Typography</a></li>
-                            <li><a href="elemets-title.php">Titles</a></li>
-                            <li><a href="elemets-categories.php">Categories</a></li>
-                            <li><a href="elemets-buttons.php">Buttons</a></li>
-                            <li><a href="elemets-tabs.php">Tabs</a></li>
-                            <li><a href="elemets-accordions.php">Accordions</a></li>
-                            <li><a href="elemets-blog.php">Blogs</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="offer.php">Hot Offers</a></li>
+                    
                 </ul>
             </div>
             <div class="header-res-lan-curr">
